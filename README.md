@@ -28,7 +28,7 @@ The database needs to be unziped before use. GitHub size restrictions kept me fr
 `go build`
 
 5. Run the following command to start the program:
-`sudo ./<name of file>.out`
+`sudo ./<name of file>`
 
 
 
