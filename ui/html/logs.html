@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Bad Proxy</title>
+    <link href="/static/css" rel="stylesheet" />
+    <script>
+
+        function archiveLogs() {
+            const resp = fetch("/archive-logs");
+        }
+
+        window.onload = logData();
+    </script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="/">Bad Proxy</a>
+
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+    </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <!-- Data -->
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+
+                        <a class="nav-link" href="/logs">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Logs
+                        </a>
+
+                        <!-- Log Functions -->
+                        <div class="sb-sidenav-menu-heading">Log Functions</div>
+
+                        <a class="nav-link" onclick="logData">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Update Logs
+                        </a>
+
+                        <a class="nav-link" onclick="archiveLogs">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Archive Logs
+                        </a>
+
+                        <!-- Rules -->
+                        <div class="sb-sidenav-menu-heading">Firewall Rules</div>
+
+                        <a class="nav-link" href="/add-firewall-rule-port">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Add Port
+                        </a>
+
+                        <a class="nav-link" href="/add-firewall-rule-geo">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Add Geo
+                        </a>
+
+                        <a class="nav-link" href="/add-firewall-rule-firewall">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Add Firewall
+                        </a>
+
+                        <!-- Rating -->
+                        <div class="sb-sidenav-menu-heading">Rate Control</div>
+
+                        <a class="nav-link" href="/add-rate-rule-bandwidth">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Add Bandwidth
+                        </a>
+
+                        <a class="nav-link" href="/add-rate-rule-iprate">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Add IP Connection
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+                <div class="row">
+                    <div class="table table-responsive table-bordered">
+                        <thead class="table-light table table-responsive table-bordered">
+                            <tr class="col">Timestamp</tr>
+                            <tr class="col">Hostname</tr>
+                            <tr class="col">KernelTimestamp</tr>
+                            <tr class="col">Prefix</tr>
+                            <tr class="col">InputInterface</tr>
+                            <tr class="col">OutputInterface</tr>
+                            <tr class="col">MACAddress</tr>
+                            <tr class="col">Source</tr>
+                            <tr class="col">Destination</tr>
+                            <tr class="col">Length</tr>
+                            <tr class="col">ToS</tr>
+                            <tr class="col">Precedence</tr>
+                            <tr class="col">TTL</tr>
+                            <tr class="col">ID</tr>
+                            <tr class="col">CongestionExperienced</tr>
+                            <tr class="col">DoNotFragment</tr>
+                            <tr class="col">MoreFragmentsFollowing</tr>
+                            <tr class="col">Frag</tr>
+                            <tr class="col">IPOptions</tr>
+                            <tr class="col">Protocol</tr>
+                            <tr class="col">Type</tr>
+                            <tr class="col">Code</tr>
+                            <tr class="col">SourcePort</tr>
+                            <tr class="col">DestinationPort</tr>
+                            <tr class="col">Sequence</tr>
+                            <tr class="col">AckSequence</tr>
+                            <tr class="col">WindowSize</tr>
+                            <tr class="col">Res</tr>
+                            <tr class="col">Urgent</tr>
+                            <tr class="col">Ack</tr>
+                            <tr class="col">Push</tr>
+                            <tr class="col">Reset</tr>
+                            <tr class="col">Syn</tr>
+                            <tr class="col">Fin</tr>
+                            <tr class="col">Urgp</tr>
+                            <tr class="col">TCPOption</tr>
+                        </thead>
+                        <tbody id="log_body">
+
+                        </tbody>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+            </footer>
+        </div>
+
+
+
+    </div>
+    <!--
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        -->
+</body>
+
+</html>

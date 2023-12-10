@@ -1,0 +1,3 @@
+cd ..
+go test -cover ./...
+cd _setup/
