@@ -1,5 +1,6 @@
 # badproxy
 Proxy Application for CSCE 5585
+Other documents are under the _doc folder
 
 
 Bad Proxy is a system designed on Debian-based systems, also this application will require for there to be IP-tables and golang installed on the system for this application to work. This application runs by running IP-tables commands to manage a system's proxy. 
