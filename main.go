@@ -44,12 +44,10 @@ func main() {
 	// reload
 	e.GET("/archive-logs", handlers.RotateLogTable)
 
-	/*
-		// initialize database
-		if err := db.Update_log_table(); err != nil {
-			log.Println("ERROR [Log Table]: ", err)
-		}
-	*/
+	// initialize database
+	if err := db.Update_log_table(); err != nil {
+		log.Println("ERROR [Log Table]: ", err)
+	}
 
 	if err := db.Update_dashboard_values(); err != nil {
 		log.Println("ERROR [Dashboard]: ", err)
