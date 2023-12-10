@@ -17,8 +17,8 @@ import (
 
 func Set_DB_PATH() string {
 
-	cpath, _ := os.Getwd()
-	log.Println(cpath)
+	//cpath, _ := os.Getwd()
+	//log.Println(cpath)
 	// set db path to use test or main db
 	// db/data/core/proxy.db
 	path := "proxy.db"
