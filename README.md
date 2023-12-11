@@ -16,7 +16,7 @@ The database needs to be unziped before use. GitHub size restrictions kept me fr
 # Installation
 
 1. To setup, begin by downloading the repo:
-	`link to gitrepo`
+	`[bad proxy](https://github.com/bad-bear/badproxy)`
 
 2. Go into the repo and find the setup script and run:
 	`cd _setup/`
