@@ -38,6 +38,7 @@ Models
 - Backend
 	- GeoMax IP Table
 	- Traffic Logs
+ 	- Firewall IPTables
 
 The Form models are related to each unique form to collect information and data to send over to the backend to process and funnel into the database. Their direction is going only one-way from the web UI to the backend. 
 
@@ -50,16 +51,16 @@ When the application starts there are a few processes that run:
 - update dashboard records
 - web server
 
-The update processes are done to load logs from the syslog file and update the values for when the dashboard calls for the data.
+The update processes are done to load logs from the syslog file and update the values for when the dashboard calls for the data. This process does take time to collect and update logs within the database with the current devices logs. The easiest method for monitoring this was to use prefixes to check and get data.
 
 ### IP Commands
-All interaction with IP tables is done using the golang exec and require sudo permissions for success. This is because trying to use go-iptables, there is little documentation and when attempting to implement, I ran into more problems trying to get it implemented. 
+All interaction with IP tables is done using the golang exec and require sudo permissions for success. This is because trying to use go-iptables, there is little documentation and when attempting to implement, I ran into more problems trying to get it implemented. Because of this I took the approach of generating and inputting the commands directly into the command line. Using some examples of inputting values into the terminal as the basis for formatting and getting inputs for each form input.
 
 ### Requests
-The server is listening to specific apis created for each form type based on the original design specification. There is a request going in the reverse to call on the data for the database. 
+The server is listening to specific apis created for each form type based on the original design specification. There is a request going in the reverse to call on the data for the database. These request only return success or failure as I deemed that security shouldn't tell too much to the API.
 
 ### Limitations
-Because of the method of using golang exec and forms, there are a number of limitations that this can't do yet though with time can be improved on. For example the freedom of all possible fields for a iptables command are not enabled as functionality and practically for implementation was severely limiting.
+Because of the method of using golang exec and forms, there are a number of limitations that this can't do yet though with time can be improved on. For example the freedom of all possible fields for a iptables command are not enabled as functionality and practically for implementation was severely limiting. For example, there are additional protocols aside from tcp, udp, and icmp. This wasn't implemented. 
 
 ### Testing Results
 The results shown in the image while generally accurate there is a significant issue with it. This is because the application during the testing phase wasn't allowed to be ran with sudo permissions which limited a number of results that required sudo permissions. 
